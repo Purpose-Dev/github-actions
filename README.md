@@ -21,6 +21,7 @@ development and deployment.
 |-----------------|------------------------------------------------------------|
 | `version-bump`  | Replaces versions in JSON/XML for easier version updating. |
 | `version-check` | Check to make sure the version matches the correct format. |
+| `version-get`   | Retrieve the version from package.json or pom.xml          |
 | `version-next`  | Calculates the next release version based on the input.    |
 
 ## 📚 Documentation
