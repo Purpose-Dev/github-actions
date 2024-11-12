@@ -1,0 +1,35 @@
+name: Test Version Bump Action
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_number:
+        description: "New version"
+        required: true
+
+jobs:
+  test-version-bumps:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Bump JSON test
+        id: test-json
+        uses: ./version-bump
+        with:
+          version: ${{ inputs.version_number }}
+          file_path: './version-bump/tests/package.json'
+
+      - name: Bump Maven XML test
+        id: test-xml
+        uses: ./version-bump
+        with:
+          version: ${{ inputs.version_number }}
+          file_path: './version-bump/tests/pom.json'
+
+      - name: Check Outputs
+        run: |
+          echo "${{ steps.test-json.outputs.status }}"
+          echo "${{ steps.test-xml.outputs.status }}"
