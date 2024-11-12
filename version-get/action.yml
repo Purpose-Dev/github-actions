@@ -1,0 +1,13 @@
+name: "Retrieve Version"
+description: "Retrieve the version from package.json or pom.xml"
+author: "Purpose-Dev"
+inputs:
+  file_path:
+    description: 'Path to the file to check for version'
+    required: true
+outputs:
+  version:
+    description: "Current version for file path defined"
+runs:
+  using: docker
+  image: "Dockerfile"
