@@ -1,0 +1,17 @@
+name: "JSON/XML Version Bump"
+description: "Replace versions in JSON/XML for easier version updating."
+author: "Purpose-Dev"
+inputs:
+  version:
+    description: "Newest version to use."
+    required: true
+  file_path:
+    description: "Path to the file to apply the new version"
+    required: true
+    default: "./"
+outputs:
+  status:
+    description: "Status"
+runs:
+  using: docker
+  image: "Dockerfile"
