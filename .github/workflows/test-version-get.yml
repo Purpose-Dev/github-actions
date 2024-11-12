@@ -1,0 +1,29 @@
+name: Test Version Get Action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-version-gets:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Retrieve JSON Version
+        id: json-version
+        uses: ./version-get
+        with:
+          file_path: './version-bump/test/package.json'
+
+      - name: Retrieve Maven Version
+        id: xml-version
+        uses: ./version-get
+        with:
+          file_path: './version-bump/test/pom.xml'
+
+      - name: Print Versions
+        run: |
+          echo "Version retrieved for JSON: ${{ steps.json-version.outputs.version }}"
+          echo "Version retrieved for XML: ${{ steps.xml-version.outputs.version }}"
