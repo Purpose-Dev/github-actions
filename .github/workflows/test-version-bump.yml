@@ -27,7 +27,7 @@ jobs:
         uses: ./version-bump
         with:
           version: ${{ inputs.version_number }}
-          file_path: './version-bump/test/pom.json'
+          file_path: './version-bump/test/pom.xml'
 
       - name: Check Outputs
         run: |
