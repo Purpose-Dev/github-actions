@@ -1,0 +1,23 @@
+name: "Version Check"
+description: "Check to make sure the version matches the correct format"
+author: "Purpose-Dev"
+inputs:
+  version:
+    description: 'Version string to check'
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Check version format
+      id: check-version-fmt
+      shell: bash
+      env:
+        VERSION: ${{ inputs.version }}
+      run: |
+        if [[ "$VERSION" =~ ^20[0-9]{2}\.(1[0-2]|[1-9])\.(3[01]|[12][0-9]|0?[1-9])\.[0-9]+$ ]]; then
+          echo "Version input validation successful."
+          exit 0
+        else
+          echo "Version input validation failed. Expected format: YYYY.MM.DD.REVISION"
+          exit 1
+        fi
