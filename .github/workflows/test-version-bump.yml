@@ -20,14 +20,14 @@ jobs:
         uses: ./version-bump
         with:
           version: ${{ inputs.version_number }}
-          file_path: './version-bump/tests/package.json'
+          file_path: './version-bump/test/package.json'
 
       - name: Bump Maven XML test
         id: test-xml
         uses: ./version-bump
         with:
           version: ${{ inputs.version_number }}
-          file_path: './version-bump/tests/pom.json'
+          file_path: './version-bump/test/pom.json'
 
       - name: Check Outputs
         run: |
